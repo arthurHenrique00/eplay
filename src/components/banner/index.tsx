@@ -6,15 +6,10 @@ import Button from '../button'
 import { useEffect, useState } from 'react'
 import { Game } from '../../pages/Home'
 import { formataPreco } from '../procuctsList'
+import { useGetFeaturedGameQuery } from '../../services/api'
 
 const Banner = () => {
-  const [game, setGame] = useState<Game>()
-
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/eplay/esportes/destaque')
-      .then((r) => r.json())
-      .then((r) => setGame(r))
-  }, [])
+  const { data: game, isLoading } = useGetFeaturedGameQuery()
 
   if (!game) {
     return <h3></h3>
@@ -33,7 +28,7 @@ const Banner = () => {
         </div>
         <Button
           type="button"
-          to="/produto"
+          to={`/product/${game.id}`}
           title="Clique aqui para aproveitar essa oferta"
         >
           Aproveitar

@@ -1,3 +1,4 @@
+import { table } from 'console'
 import { createGlobalStyle } from 'styled-components'
 
 export const cores = {
@@ -6,6 +7,11 @@ export const cores = {
   cinza: '#333',
   verde: '#10ac84',
   cinzaClaro: '#a3a3a3'
+}
+
+export const breakPoints = {
+  desktop: '1024px',
+  tablet: '768px'
 }
 
 export const GlobalCss = createGlobalStyle`
@@ -27,5 +33,9 @@ padding-top: 40px;
   max-width: 1024px;
   width: 100%;
   margin: 0 auto;
+
+  @media (max-width: ${breakPoints.desktop}) {
+  max-width: 80%;
+  }
 }
 `

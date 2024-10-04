@@ -9,9 +9,18 @@ type Props = {
   desc: string
   infos: string[]
   image: string
+  id: number
 }
 
-const Product = ({ title, category, system, desc, infos, image }: Props) => {
+const Product = ({
+  title,
+  category,
+  system,
+  desc,
+  infos,
+  image,
+  id
+}: Props) => {
   const getDesc = (desc: string) => {
     if (desc.length > 95) {
       return desc.slice(0, 92) + '...'
@@ -21,7 +30,7 @@ const Product = ({ title, category, system, desc, infos, image }: Props) => {
   }
 
   return (
-    <Card>
+    <Card to={`/product/${id}`}>
       <img src={image} alt={title} />
       <Infos>
         {infos.map((info) => (
