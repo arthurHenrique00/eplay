@@ -7,9 +7,11 @@ import { InputGroup, Row, TabButton } from './styles'
 import boleto from '../../assets/images/barcode.png'
 import cartao from '../../assets/images/credit-card.png'
 import * as Yup from 'yup'
+import { usePurchaseMutation } from '../../services/api'
 
 const Checkout = () => {
   const [payWCard, setPayWCard] = useState(false)
+  const [purchase, { isError, isLoading, data }] = usePurchaseMutation()
 
   const form = useFormik({
     initialValues: {
@@ -70,8 +72,40 @@ const Checkout = () => {
         payWCard ? schema.required('O campo é obrigatório') : schema
       )
     }),
-    onSubmit: (v) => {
-      console.log(v)
+    onSubmit: (values) => {
+      purchase({
+        billing: {
+          document: values.cpf,
+          email: values.email,
+          name: values.fullName
+        },
+        delivery: {
+          email: values.deliveryEmail
+        },
+        payment: {
+          installments: 1,
+          card: {
+            active: payWCard,
+            code: Number(values.carCode),
+            name: values.cardDisplayName,
+            number: values.cardNumber,
+            owner: {
+              document: values.cpfCardOwner,
+              name: values.cardOwner
+            },
+            expires: {
+              month: 1,
+              year: 2023
+            }
+          }
+        },
+        products: [
+          {
+            id: 1,
+            price: 10
+          }
+        ]
+      })
     }
   })
 
