@@ -1,28 +1,11 @@
 import { useState } from 'react'
 import Section from '../Section'
 import { Action, Item, Items, Modal, ModalContent } from './styles'
-import hlegacy from '../../assets/images/image-6.png'
-import spider from '../../assets/images/banner-homem-aranha.png'
+
 import play from '../../assets/images/botao-play 1.png'
 import zoom from '../../assets/images/mais-zoom 1.png'
-import bannerHL from '../../assets/images/image10.png'
 import fechar from '../../assets/images/close1.png'
 import { GalleryItem } from '../../pages/Home'
-
-const mock: GalleryItem[] = [
-  {
-    type: 'imagem',
-    url: hlegacy
-  },
-  {
-    type: 'imagem',
-    url: spider
-  },
-  {
-    type: 'video',
-    url: 'https://www.youtube.com/embed/GqPLeQJ6lJk?si=VXUXbNdfGIIaeogF'
-  }
-]
 
 type Props = {
   defaultCover: string

@@ -1,7 +1,5 @@
 import ProductList from '../../components/procuctsList'
 
-import { Game } from '../Home'
-import { useEffect, useState } from 'react'
 import {
   useGetGameAcaoQuery,
   useGetGameLutaQuery,

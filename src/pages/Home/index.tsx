@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import Banner from '../../components/banner'
 import ProductList from '../../components/procuctsList'
 import { useGetOnSaleQuery, useGetSoonQuery } from '../../services/api'
