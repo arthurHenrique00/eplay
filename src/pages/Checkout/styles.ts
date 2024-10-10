@@ -39,6 +39,10 @@ export const InputGroup = styled.div<InputGroupPros>`
     width: 100%;
     border-radius: 9px;
     margin: 16px 0;
+
+    &.error {
+      border: 1px solid red;
+    }
   }
 `
 

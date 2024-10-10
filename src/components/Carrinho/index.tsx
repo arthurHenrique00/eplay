@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import Button from '../button'
 import {
   CartContainer,
@@ -11,10 +12,12 @@ import Tag from '../tag'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { close, remove } from '../../store/reducers/cart'
-import { formataPreco } from '../procuctsList'
+import { getTotalPrice, parseToBrl } from '../../utils'
+import { Game } from '../../pages/Home'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
+  const navigate = useNavigate()
 
   const dispatch = useDispatch()
 
@@ -22,14 +25,13 @@ const Cart = () => {
     dispatch(close())
   }
 
-  const getTotalPrice = () => {
-    return items.reduce((acumulador, valorAtual) => {
-      return (acumulador += valorAtual.prices.current!)
-    }, 0)
-  }
-
   const removeItem = (id: number) => {
     dispatch(remove(id))
+  }
+
+  const goToCheckout = () => {
+    navigate('/checkout')
+    closeCart()
   }
 
   return (
@@ -44,7 +46,7 @@ const Cart = () => {
                 <h3>{i.name} </h3>
                 <Tag>{i.details.category}</Tag>
                 <Tag>{i.details.system}</Tag>
-                <span>{formataPreco(i.prices.current)}</span>
+                <span>{parseToBrl(i.prices.current)}</span>
               </div>
               <button onClick={() => removeItem(i.id)} type="button" />
             </CartItem>
@@ -52,10 +54,14 @@ const Cart = () => {
         </ul>
         <Quantity>{items.length} Jogos no carrinho</Quantity>
         <Prices>
-          Total de {formataPreco(getTotalPrice())}{' '}
+          Total de {parseToBrl(getTotalPrice(items))}{' '}
           <span>Em até 6x sem juros</span>
         </Prices>
-        <Button title="clique aqui para continuar com a compra" type="button">
+        <Button
+          onClick={goToCheckout}
+          title="clique aqui para continuar com a compra"
+          type="button"
+        >
           Continuar com a compra
         </Button>
       </Sidebar>

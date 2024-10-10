@@ -69,7 +69,7 @@ const Gallery = ({ defaultCover, name, items }: Props) => {
         <ModalContent className="container">
           <header>
             <h4>{name}</h4>
-            <img src={fechar} onClick={() => closeModal()} />
+            <img src={fechar} onClick={closeModal} />
           </header>
           {modal.type === 'imagem' ? (
             <img src={modal.url} />

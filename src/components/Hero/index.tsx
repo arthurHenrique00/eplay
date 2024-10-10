@@ -2,9 +2,9 @@ import { Game } from '../../pages/Home'
 import Button from '../button'
 import Tag from '../tag'
 import { Banner } from './styles'
-import { formataPreco } from '../procuctsList'
 import { useDispatch } from 'react-redux'
 import { add, open } from '../../store/reducers/cart'
+import { parseToBrl } from '../../utils'
 
 type Props = {
   game: Game
@@ -26,14 +26,12 @@ const Hero = ({ game }: Props) => {
           <Tag>{game.details.system}</Tag>
         </div>
         <div>
-          <h2>Hogwarts Legacy</h2>
-          <p>
+          <h2>{game.name}</h2>
+          <p style={{ padding: '16px 0' }}>
             {game.prices.discount && (
-              <span>De {formataPreco(game.prices.old)}</span>
+              <span>De {parseToBrl(game.prices.old)}</span>
             )}
-            {game.prices.current && (
-              <>Por {formataPreco(game.prices.current)}</>
-            )}
+            {game.prices.current && <> Por {parseToBrl(game.prices.current)}</>}
           </p>
           {game.prices.current && (
             <Button
