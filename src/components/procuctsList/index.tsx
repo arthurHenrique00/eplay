@@ -1,6 +1,5 @@
 import Product from '../product'
 import { Container, List } from './styles'
-import { Game } from '../../pages/Home'
 import { parseToBrl } from '../../utils'
 import Loader from '../Loader'
 

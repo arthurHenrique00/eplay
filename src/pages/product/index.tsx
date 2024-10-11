@@ -26,8 +26,8 @@ const Product = () => {
       <Section title="Mais detalhes" background="gray">
         <p>
           <b>Plataforma:</b> {game.details.system} Desenvolvedor:{' '}
-          {game.details.developer}
-          Editora: {game.details.publisher}
+          {game.details.developer} <br />
+          Editora: {game.details.publisher} <br />
           <b>Idiomas:</b> O jogo oferece suporte a diversos idiomas, incluindo
           {game.details.languages.join(', ')}
         </p>

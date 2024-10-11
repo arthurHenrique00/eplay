@@ -5,7 +5,6 @@ import { Action, Item, Items, Modal, ModalContent } from './styles'
 import play from '../../assets/images/botao-play 1.png'
 import zoom from '../../assets/images/mais-zoom 1.png'
 import fechar from '../../assets/images/close1.png'
-import { GalleryItem } from '../../pages/Home'
 
 type Props = {
   defaultCover: string
