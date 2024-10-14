@@ -234,6 +234,8 @@ const Checkout = () => {
                     id="cpf"
                     name="cpf"
                     value={form.values.cpf}
+                    onChange={form.handleChange}
+                    onBlur={form.handleBlur}
                     className={checkInputHasError('cpf') ? 'error' : ''}
                     mask="999.999.999-99"
                   />
